@@ -1,6 +1,7 @@
 package br.thullyo.javaawss3fileupload.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import software.amazon.awssdk.auth.credentials.AwsBasicCredentials;
 import software.amazon.awssdk.auth.credentials.StaticCredentialsProvider;
@@ -19,6 +20,7 @@ public class S3Config {
     @Value("${aws.secretKey}")
     private String secretKey;
 
+    @Bean
     public S3Client s3Client(){
         AwsBasicCredentials awsBasicCredentials = AwsBasicCredentials.create(accessKeyId, secretKey);
 

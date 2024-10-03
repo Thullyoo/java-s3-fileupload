@@ -2,8 +2,7 @@ package br.thullyo.javaawss3fileupload.controller;
 
 import br.thullyo.javaawss3fileupload.service.FileUploadService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +17,8 @@ public class FileUploadController {
     @Autowired
     private FileUploadService fileUploadService;
 
-    @PostMapping
+
+    @PostMapping(consumes = "multipart/form-data")
     public ResponseEntity<Void> uploadFile(@RequestParam("file")MultipartFile file){
         fileUploadService.uploadFile(file);
         return ResponseEntity.ok().body(null);
